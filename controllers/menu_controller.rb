@@ -15,6 +15,7 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - Exit"
+    puts "6 - View Entry Number (n)"
     print "Enter your selection: "
     #Capture user input with 'gets' and convert selection to integer
     selection = gets.to_i
@@ -40,10 +41,29 @@ class MenuController
     when 5
       puts "Goodbye!"
       exit(0)
+    when 6
+      system "clear"
+      view_entry_number
+      main_menu
     else
       system "clear"
       puts "Sorry that is not a valid input"
       main_menu
+    end
+  end
+
+  def view_entry_number
+    print "Please provide the number of the entry you wish to view: "
+    selection = gets.chomp.to_i
+
+    if address_book.entries[selection]
+      puts address_book.entries[selection]
+      puts "Please press enter to return to the main menu"
+      gets.chomp
+      system "clear"
+    else
+      puts "Sorry, entry #{selection}, does not exist. Please try again and provide a valid entry number."
+      view_entry_number
     end
   end
 
