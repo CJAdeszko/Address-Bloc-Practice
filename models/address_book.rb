@@ -27,5 +27,26 @@ class AddressBook
       add_entry(row_hash['name'], row_hash['phone_number'], row_hash['email'])
     end
   end
-  
+
+  def binary_search(name)
+    #Save the left most item in array in lower and the right most in upper
+    lower = 0
+    upper = entries.length - 1
+
+    while lower <= upper
+      #Find the middle index of the array and save the name in 'mid_name'
+      mid = (lower + upper) / 2
+      mid_name = entries[mid].name
+      #Compare the name we are searching for to the mid_name
+      if name == mid_name
+        return entries[mid]   #If name == mid_name, we found the correct entry
+      elsif name < mid_name
+        upper = mid - 1   #If name comes before mid_name, set the upper limit to the mid index - 1
+      elsif name > mid_name
+        lower = mid + 1   #If name comes after mid_name, set the lower limit to the mid index + 1
+      end
+    end
+    return nil    #If no match is found in the array, return nil
+  end
+
 end
