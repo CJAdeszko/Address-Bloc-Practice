@@ -15,6 +15,7 @@ class MenuController
     puts "3 - Search for an entry"
     puts "4 - Import entries from a CSV"
     puts "5 - Exit"
+    puts "6 - Delete all entries"
     print "Enter your selection: "
     #Capture user input with 'gets' and convert selection to integer
     selection = gets.to_i
@@ -40,6 +41,11 @@ class MenuController
     when 5
       puts "Goodbye!"
       exit(0)
+    when 6
+      system "clear"
+      address_book.demolish_entries
+      puts "All entries deleted."
+      main_menu
     else
       system "clear"
       puts "Sorry that is not a valid input"

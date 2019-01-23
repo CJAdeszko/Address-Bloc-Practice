@@ -49,4 +49,7 @@ class AddressBook
     return nil    #If no match is found in the array, return nil
   end
 
+  def demolish_entries
+    @entries = []
+  end
 end
